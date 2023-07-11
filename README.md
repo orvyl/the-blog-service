@@ -36,9 +36,11 @@
   "date_registration": "2023-07-11T23:23:12"
 }
 ```
+1. If id not found, response with HTTP 404 (response body is up to you)
+
 ## Get All Blogger
 
-`GET /blogger/{id}`
+`GET /blogger`
 
 `Response: 200 - OK`
 ```json
@@ -79,7 +81,7 @@
 
 1. All fields are required
 
-## Create Blog
+## Update Blog
 
 `PUT /blog/{blog_id}`
 ```json
@@ -88,7 +90,7 @@
   "body": "This is the updated content",
 }
 ```
-`Response: 201 - CREATED`
+`Response: 204 - NO CONTENT`
 ```json
 {
   "id": "<UUID>",
@@ -97,6 +99,8 @@
   "last_updated": "2023-08-11T23:23:12"   // this must be updated
 }
 ```
+1. All fields are required
+
 ## Get blog
 
 `GET /blog/{id}`
