@@ -13,6 +13,7 @@
 1. All fields are required.
 2. Email format must be valid.
 3. Password must be at least 5 characters.
+4. Make sure email is not yet registered.
 
 `Response: 201 - Created`
 ```json
@@ -34,3 +35,124 @@
   "email": "jdoe@apper.ph",
   "date_registration": "2023-07-11T23:23:12"
 }
+```
+## Get All Blogger
+
+`GET /blogger/{id}`
+
+`Response: 200 - OK`
+```json
+[
+  {
+    "id": "<UUID>",
+    "name": "John Doe 1",
+    "email": "jdoe@apper.ph",
+    "date_registration": "2023-07-11T23:23:12"
+  },
+  {
+    "id": "<UUID>",
+    "name": "John Doe 2",
+    "email": "jdoe2@apper.ph",
+    "date_registration": "2023-07-11T23:23:12"
+  }
+]
+```
+## Create Blog
+
+`POST /blog`
+```json
+{
+  "title": "This is the title",
+  "body": "This is the actual content",
+  "blogger_id": "<UUID>"
+}
+```
+`Response: 201 - CREATED`
+```json
+{
+  "id": "<UUID>",
+  "blogger_id": "<UUID>",
+  "created_at": "2023-07-11T23:23:12",
+  "last_updated": "2023-07-11T23:23:12"
+}
+```
+
+1. All fields are required
+
+## Create Blog
+
+`PUT /blog/{blog_id}`
+```json
+{
+  "title": "This is the updated title",
+  "body": "This is the updated content",
+}
+```
+`Response: 201 - CREATED`
+```json
+{
+  "id": "<UUID>",
+  "blogger_id": "<UUID>",
+  "created_at": "2023-07-11T23:23:12",
+  "last_updated": "2023-08-11T23:23:12"   // this must be updated
+}
+```
+## Get blog
+
+`GET /blog/{id}`
+
+`Response: 200 - OK`
+```json
+{
+  "blogger_id": "<UUID>",
+  "title": "The updated title",
+  "body": "The updated content",
+  "created_at": "2023-07-11T23:23:12",
+  "last_updated": "2023-08-11T23:23:12"
+}
+```
+
+## Get All blogs
+
+`GET /blog`
+
+`Response: 200 - OK`
+```json
+[
+  {
+    "blogger_id": "<UUID>",
+    "title": "The updated title",
+    "body": "The updated content",
+    "created_at": "2023-07-11T23:23:12",
+    "last_updated": "2023-08-11T23:23:12"
+  },
+  {
+    "blogger_id": "<UUID>",
+    "title": "The updated title2",
+    "body": "The updated content2",
+    "created_at": "2023-07-11T23:23:12",
+    "last_updated": "2023-08-11T23:23:12"
+  }
+]
+```
+## Get All blogs by blogger
+
+`GET /blog/blogger/{blogger_id}`
+
+`Response: 200 - OK`
+```json
+[
+  {
+    "title": "The updated title",
+    "body": "The updated content",
+    "created_at": "2023-07-11T23:23:12",
+    "last_updated": "2023-08-11T23:23:12"
+  },
+  {
+    "title": "The updated title2",
+    "body": "The updated content2",
+    "created_at": "2023-07-11T23:23:12",
+    "last_updated": "2023-08-11T23:23:12"
+  }
+]
+```
